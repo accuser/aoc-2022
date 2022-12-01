@@ -1,0 +1,13 @@
+{
+  "name": "aoc-2022",
+  "version": "1.0.0",
+  "description": "Advent of Code 2022",
+  "scripts": {
+    "test:d01": "jest day-01"
+  },
+  "author": "Matthew Gibbons <matthew.gibbons@multiverse.io>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
