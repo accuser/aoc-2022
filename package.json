@@ -4,7 +4,8 @@
   "description": "Advent of Code 2022",
   "scripts": {
     "test:d01": "jest day-01",
-    "test:d02": "jest day-02"
+    "test:d02": "jest day-02",
+    "test:d03": "jest day-03"
   },
   "author": "Matthew Gibbons <matthew.gibbons@multiverse.io>",
   "license": "ISC",
