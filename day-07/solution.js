@@ -62,7 +62,8 @@ const solve = (input) => {
 
   const part2 = Object.entries(sizes)
     .filter(([k, v]) => v >= 30_000_000 - available)
-    .sort((a, b) => a[1] - b[1])[0][1];
+    .map(([, size]) => size)
+    .sort((a, b) => a - b)[0];
 
   return { part1, part2 };
 };
