@@ -7,21 +7,13 @@ const solve = (input) => {
 
   const files = lines
     .map((line) => {
-      if (line.startsWith("$ cd")) {
-        const [, dir] = line.match(/^\$ cd (.+)$/);
+      const [, dir, size, file] = line.match(/^\$ cd (.+)|(\d+)\s(.+)$/) ?? [];
 
-        if (dir === "/") {
-          cwd = "/";
-        } else {
-          cwd = path.resolve(path.join(cwd, dir));
-        }
-      } else if (line === "$ ls") {
-        //
-      } else if (line.startsWith("dir")) {
-        //
-      } else {
-        const [, size, file] = line.match(/^(\d+)\s(.+)$/);
-
+      if (dir === "/") {
+        cwd = dir;
+      } else if (dir) {
+        cwd = path.resolve(path.join(cwd, dir));
+      } else if (size && file) {
         return {
           file: path.join(cwd, file),
           size,
@@ -35,7 +27,6 @@ const solve = (input) => {
     .map((json) => JSON.parse(json))
     .map(({ file, size }) => ({
       dir: path.dirname(file),
-      file: path.basename(file),
       size: +size,
     }))
     .reduce((prev, { dir, size }) => {
