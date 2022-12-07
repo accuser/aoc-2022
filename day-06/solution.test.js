@@ -2,7 +2,7 @@ const { parse, solve } = require("./solution");
 
 const input = ``;
 
-describe("day 5", () => {
+describe("day 6", () => {
   describe("part 1", () => {
     it("is 5", () => {
       const { part1 } = solve("bvwbjplbgvbhsrlpgdmjqwftvncz");
