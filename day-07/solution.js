@@ -59,7 +59,6 @@ const solve = (input) => {
     .reduce((p, [, size]) => p + size, 0);
 
   const available = 70_000_000 - sizes["/"];
-  console.log(available);
 
   const part2 = Object.entries(sizes)
     .filter(([k, v]) => v >= 30_000_000 - available)
