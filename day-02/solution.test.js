@@ -1,6 +1,6 @@
 const { solve } = require("./solution");
 
-const input = `A Y\nB X\nC Z\n`;
+const input = `A Y\nB X\nC Z`;
 
 describe("day 2", () => {
   describe("part 1", () => {
