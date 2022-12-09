@@ -1,3 +1,5 @@
+const sum = (a, b) => Number(a) + Number(b);
+
 const score = (a, b) => {
   switch (a - b) {
     case 0:
@@ -24,15 +26,11 @@ const cheat = (a, b) => {
 const solve = (input) => {
   const values = transform(input);
 
-  const part1 = values
-    .map(([a, b]) => b + score(a, b))
-    .flat()
-    .reduce((prev, curr) => prev + curr, 0);
+  const part1 = values.map(([a, b]) => b + score(a, b)).reduce(sum);
 
   const part2 = values
     .map(([a, b]) => cheat(a, b) + score(a, cheat(a, b)))
-    .flat()
-    .reduce((prev, curr) => prev + curr, 0);
+    .reduce(sum);
 
   return { part1, part2 };
 };
@@ -40,10 +38,10 @@ const solve = (input) => {
 const transform = (input) =>
   input
     .split(/\n/)
-    .filter(Boolean)
-    .map((line) => {
-      const [a, b] = line.split(" ");
-      return [[, "A", "B", "C"].indexOf(a), [, "X", "Y", "Z"].indexOf(b)];
-    });
+    .map((line) => line.split(" "))
+    .map(([a, b]) => [
+      [, "A", "B", "C"].indexOf(a),
+      [, "X", "Y", "Z"].indexOf(b),
+    ]);
 
 module.exports = { solve };

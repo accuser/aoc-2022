@@ -29,6 +29,6 @@ const solve = (input) => {
   return { part1, part2 };
 };
 
-const transform = (input) => input.split(/\n/).filter(Boolean);
+const transform = (input) => input.split(/\n/);
 
 module.exports = { solve };
