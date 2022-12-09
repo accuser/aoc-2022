@@ -1,27 +1,7 @@
 const path = require("node:path");
 
 const solve = (input) => {
-  const lines = transform(input);
-
-  let cwd = "/";
-
-  const files = lines
-    .map((line) => {
-      const [, dir, size, file] = line.match(/^\$ cd (.+)|(\d+)\s(.+)$/) ?? [];
-
-      if (dir === "/") {
-        cwd = dir;
-      } else if (dir) {
-        cwd = path.resolve(path.join(cwd, dir));
-      } else if (size && file) {
-        return {
-          file: path.join(cwd, file),
-          size,
-        };
-      }
-    })
-    .filter(Boolean)
-    .reduce((p, c) => p.add(JSON.stringify(c)), new Set());
+  const files = transform(input);
 
   const sizes = [...files]
     .map((json) => JSON.parse(json))
@@ -59,6 +39,27 @@ const solve = (input) => {
   return { part1, part2 };
 };
 
-const transform = (input) => input.split(/\n/);
+const transform = (input) => {
+  let cwd = "/";
+
+  return input
+    .split(/\n/)
+    .map((line) => {
+      const [, dir, size, file] = line.match(/^\$ cd (.+)|(\d+)\s(.+)$/) ?? [];
+
+      if (dir === "/") {
+        cwd = dir;
+      } else if (dir) {
+        cwd = path.resolve(path.join(cwd, dir));
+      } else if (size && file) {
+        return {
+          file: path.join(cwd, file),
+          size,
+        };
+      }
+    })
+    .filter(Boolean)
+    .reduce((p, c) => p.add(JSON.stringify(c)), new Set());
+};
 
 module.exports = { solve };
