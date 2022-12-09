@@ -1,8 +1,3 @@
-const delta = (d) => [
-  d === "R" ? 1 : d === "L" ? -1 : 0,
-  d === "D" ? 1 : d === "U" ? -1 : 0,
-];
-
 const simulate = (movements, length) => {
   const rope = Array.from({ length }, () => ({ x: 0, y: 0 }));
 
@@ -23,14 +18,7 @@ const simulate = (movements, length) => {
 
           if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1) {
             // noop
-          } else if (Math.abs(dx) === 2 && dy === 0) {
-            rope[i].x += Math.sign(dx);
-          } else if (Math.abs(dx) === 2) {
-            rope[i].x += Math.sign(dx);
-            rope[i].y += Math.sign(dy);
-          } else if (Math.abs(dy) === 2 && dx === 0) {
-            rope[i].y += Math.sign(dy);
-          } else if (Math.abs(dy) === 2) {
+          } else if (Math.abs(dx) === 2 || Math.abs(dy)) {
             rope[i].x += Math.sign(dx);
             rope[i].y += Math.sign(dy);
           }
