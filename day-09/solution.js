@@ -24,15 +24,15 @@ const simulate = (movements, length) => {
           if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1) {
             // noop
           } else if (Math.abs(dx) === 2 && dy === 0) {
-            rope[index].x += Math.sign(dx);
+            rope[i].x += Math.sign(dx);
           } else if (Math.abs(dx) === 2) {
-            rope[index].x += Math.sign(dx);
-            rope[index].y += Math.sign(dy);
+            rope[i].x += Math.sign(dx);
+            rope[i].y += Math.sign(dy);
           } else if (Math.abs(dy) === 2 && dx === 0) {
-            rope[index].y += Math.sign(dy);
+            rope[i].y += Math.sign(dy);
           } else if (Math.abs(dy) === 2) {
-            rope[index].x += Math.sign(dx);
-            rope[index].y += Math.sign(dy);
+            rope[i].x += Math.sign(dx);
+            rope[i].y += Math.sign(dy);
           }
         }
       });
